@@ -11,9 +11,9 @@
     <script>
         osql.requireLogin();//すべてのページに入れる．google認証をして，osql.connect()や，osql.getMe()を使えるようにしてくれる．
 
-        function button1Pressed() {
+        $().ready(function () {
             doSelect();
-        }
+        });
 
         async function doSelect() {
             var sql = 'select * from Tweets order by time desc limit 20';
@@ -50,7 +50,6 @@
 
 <body>
     <h1>Tweets</h1>
-    <br><button onclick="button1Pressed()">X</button><br>
     名前:<input id="tf1" value="名無し" type="textfield">
     <br>
     tweet:<input id="tf2" type="textfield">
