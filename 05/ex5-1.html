@@ -28,15 +28,31 @@
             html = html + '</ul>';
             document.getElementById('result').innerHTML = html;
         }
+
+        async function kensaku() {
+            var kensaku = document.getElementById('tf1').value;
+            var sql = `select * from Tweets where tweet like '%${kensaku}%' order by time desc`;
+            var objects = await osql.connect(sql);
+            console.log(objects);
+            var html = '';
+            html = html + '<ul>';
+            for (var i = 0; i < objects.length; i++) {
+                var object = objects[i];
+                html = html + '<li>' + object.name + ',' + object.tweet + ',' + object.time + '</li>';
+            }
+            html = html + '</ul>';
+            document.getElementById('result').innerHTML = html;
+        }
+
     </script>
 
 </head>
 
 <body>
     <h1>tweet</h1>
-    <p>tewwt一覧</p>
-    <p>本当にできてる？</p>
-    <button onclick="button1Pressed()">X</button>
+    <button onclick="button1Pressed()">X</button><br>
+    <input id="tf1" type="textfield">
+    <button onclick="kensaku()">検索</button><br>
     <hr>
     <p id="result">xxxx</p>
 </body>
