@@ -27,14 +27,14 @@
                 html = html + '<td>' + object.id + '</td>';
                 html = html + '<td>' + object.name + '</td>';
                 html = html + '<td>' + '<a href="update.html?userid=' + object.id + '">変更</a>' + '</td>';
+                html = html + '<td>' + '<button onclick="sakujyo(\'' + object.id + '\')">削除</buttun>' + '</td>';
                 html = html + '</tr>';
             }
             html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
 
-        async function sakujyo() {
-            var userid = document.getElementById('tf1').value;
+        async function sakujyo(userid) {
             var sql = `delete from Users where id = "${userid}"`;
             var objects = await osql.connect(sql);
             console.log(objects);
@@ -46,9 +46,6 @@
 
 <body>
     <h1>Users</h1>
-    <hr>
-    <p>ID:<input id = "tf1" type = "textfield" ><button onclick="sakujyo()">削除</button></p>
-    <hr>
     <p id="result">xxxx</p>
 </body>
 
