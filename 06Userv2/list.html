@@ -32,12 +32,23 @@
             html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
+
+        async function sakujyo() {
+            var userid = document.getElementById('tf1').value;
+            var sql = `delete from Users where id = "${userid}"`;
+            var objects = await osql.connect(sql);
+            console.log(objects);
+            execSelect();
+        }
     </script>
 
 </head>
 
 <body>
     <h1>Users</h1>
+    <hr>
+    <p>ID:<input id = "tf1" type = "textfield" ><button onclick="sakujyo()">削除</button></p>
+    <hr>
     <p id="result">xxxx</p>
 </body>
 
