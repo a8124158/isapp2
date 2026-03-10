@@ -13,11 +13,21 @@
         
         $().ready(function () {
             init();
+            execSelect();
         })
 
         function init() {
             var name = sessionStorage.getItem('username');
             document.getElementById('welcome').innerHTML = 'ようこそ'+name+'さん';
+        }
+
+        async function execSelect() {
+            var userid = sessionStorage.getItem('userid');
+            var html = '';
+            html = html + '<ul>';
+            html = html + '<li>' + '<a href="update.html?userid=' + userid + '">ユーザ情報変更</a>' + '</li>';
+            html = html + '</ul>';
+            document.getElementById('result').innerHTML = html;
         }
     </script>
 
@@ -27,6 +37,7 @@
     <h1>ユーザトップ</h1>
     <p id="welcome"></p>
     <hr>
+    <p id="result">xxxx</p>
 
 </body>
 
