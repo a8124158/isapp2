@@ -23,9 +23,11 @@
 
         async function execSelect() {
             var userid = sessionStorage.getItem('userid');
+            var username = sessionStorage.getItem('username');
             var html = '';
             html = html + '<ul>';
             html = html + '<li>' + '<a href="update.html?userid=' + userid + '">ユーザ情報変更</a>' + '</li>';
+            html = html + '<li>' + '<a href="tweet.html?username=' + username + '">Tweet</a>' + '</li>';
             html = html + '</ul>';
             document.getElementById('result').innerHTML = html;
         }
