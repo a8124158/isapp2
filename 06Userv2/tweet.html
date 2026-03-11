@@ -62,6 +62,20 @@
 
             doSelect();
         }
+
+        async function Follow() {
+            var fromid = osql.getParam('username');
+            var toid = document.getElementById('tf3').value;
+            var sql = `insert into Follows (fromid, toid) values("${fromid}", "${toid}");`;
+            var objects = await osql.connect(sql);
+            console.log(objects);
+
+            document.getElementById('follow').innerHTML = toid + "をフォローしました";
+
+            document.getElementById('tf3').value = '';
+
+            doSelect();
+        }
     </script>
 
 </head>
@@ -71,8 +85,11 @@
     名前:<input id="tf1" value="" type="textfield">
     <br>
     tweet:<input id="tf2" type="textfield">
-    <button onclick="doInsert()">tweet</button>
-    <br>
+    <button onclick="doInsert()">tweet</button><br>
+    <input id="tf3" type="textfield">
+    <button onclick="Follow()">Follow</button>
+    <p id = "follow"></p>
+    <hr>
     <p id="result">xxxx</p>
 </body>
 
