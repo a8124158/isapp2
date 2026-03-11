@@ -23,6 +23,9 @@
         async function name() {
             var username = osql.getParam('username');
             document.getElementById('tf1').value = username;
+
+            var html = '<a href="followlist.html?username=' + username + '">フォローリスト</a>';
+            document.getElementById('followlist').innerHTML = html;
         }
 
         async function doCount() {
@@ -88,6 +91,7 @@
     <button onclick="doInsert()">tweet</button><br>
     <input id="tf3" type="textfield">
     <button onclick="Follow()">Follow</button>
+    <p id = "followlist"></p>
     <p id = "follow"></p>
     <hr>
     <p id="result">xxxx</p>
